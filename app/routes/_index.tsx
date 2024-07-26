@@ -1,48 +1,28 @@
-import type { MetaFunction } from "@remix-run/node";
+import { useState } from 'react';
+import type { MetaFunction } from '@remix-run/node';
+import NewIngredient from '../components/AddIngredient';
+import IngredientList from '../components/IngredientList';
+import SaverAI from '../components/SaverAI';
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "The Sandwich Saver" },
+    { name: "The Sandwich Saver", content: "Remix your leftovers into something new!" },
   ];
 };
 
 export default function Index() {
+  const [ingredientList, setIngredientList] = useState<{ text: string; id: number }[]>([]);
+
   return (
-    <div className="font-sans p-4">
-      <h1 className="text-3xl">Welcome to Remix</h1>
-      <ul className="list-disc mt-4 pl-6 space-y-2">
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/quickstart"
-            rel="noreferrer"
-          >
-            5m Quick Start
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/start/tutorial"
-            rel="noreferrer"
-          >
-            30m Tutorial
-          </a>
-        </li>
-        <li>
-          <a
-            className="text-blue-700 underline visited:text-purple-900"
-            target="_blank"
-            href="https://remix.run/docs"
-            rel="noreferrer"
-          >
-            Remix Docs
-          </a>
-        </li>
-      </ul>
+    <div className="font-sans p-4 flex">
+      <div id="left-column" className="m-2 border-solid border-2 p-5">
+        <IngredientList ingredientList={ingredientList} setIngredientList={setIngredientList} />
+        <NewIngredient />
+      </div>
+      <div id="right-column" className="m-2 p-5 w-screen bg-cinerous">
+        <SaverAI ingredientList={ingredientList.map(ingredient => ingredient.text)} />
+      </div>
     </div>
   );
 }
