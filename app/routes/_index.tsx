@@ -15,12 +15,12 @@ export default function Index() {
   const [ingredientList, setIngredientList] = useState<{ text: string; id: number }[]>([]);
 
   return (
-    <div className="font-sans p-4 flex">
-      <div id="left-column" className="m-2 border-solid border-2 p-5">
+    <div className="font-sans p-4 md:flex">
+      <div id="left-column" className="m-2 p-5">
         <IngredientList ingredientList={ingredientList} setIngredientList={setIngredientList} />
         <NewIngredient />
       </div>
-      <div id="right-column" className="m-2 p-5 w-screen bg-cinerous">
+      <div id="right-column" className="m-2 p-5 w-screen bg-cinerous/75">
         <SaverAI ingredientList={ingredientList.map(ingredient => ingredient.text)} />
       </div>
     </div>

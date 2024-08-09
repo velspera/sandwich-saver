@@ -10,7 +10,11 @@ export default {
         'eggplant': '#6F5060',
         'cinerous': '#A78682',
         'midgreen': '#124559'
-      }
+      },
+      fontFamily: {
+        'sans': ['Beiruti', 'sans-serif'],
+        'lobster': ['Lobster', 'cursive']
+      },
     },
   },
   plugins: [],

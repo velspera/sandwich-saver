@@ -1,40 +1,14 @@
-# Welcome to Remix!
+# The Sandwich Saver
 
-- 📖 [Remix docs](https://remix.run/docs)
+This is a demo app built on the [Remix](https://remix.run/docs) framework. It accepts a list of ingredients and submits them within a prompt to an LLM and returns a suggested non-sandwich recipe.
 
-## Development
+## Dependencies
 
-Run the dev server:
+- [Fly.io](https://fly.io/) (for self-hosted LLM on Fly GPU)
+- [Ollama](https://ollama.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [DOMPurify](https://github.com/cure53/DOMPurify)
 
-```shellscript
-npm run dev
-```
+## Resources
 
-## Deployment
-
-First, build your app for production:
-
-```sh
-npm run build
-```
-
-Then run the app in production mode:
-
-```sh
-npm start
-```
-
-Now you'll need to pick a host to deploy it to.
-
-### DIY
-
-If you're familiar with deploying Node applications, the built-in Remix app server is production-ready.
-
-Make sure to deploy the output of `npm run build`
-
-- `build/server`
-- `build/client`
-
-## Styling
-
-This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever css framework you prefer. See the [Vite docs on css](https://vitejs.dev/guide/features.html#css) for more information.
+- Youtube: [How to Self-Host an LLM | Flky GPUs + Ollama](https://www.youtube.com/watch?v=T1yVMs7P-Ng)

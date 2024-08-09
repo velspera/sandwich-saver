@@ -1,18 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState} from 'react';
 import DOMPurify from 'dompurify';
 
 const SaverAI: React.FC<{ ingredientList: string[] }> = ({ ingredientList }) => {
-  const [output, setOutput] = useState<string | null>(null);
+  const [output, setOutput] = useState<string | null>(null); //create the output variable and set it to null to start
 
-  useEffect(() => {
-    console.log("Current ingredient list in SaverAI:", ingredientList);
-  }, [ingredientList]);
-
+  //create a function to run the model
   const runModel = async () => {
-    try {
-      console.log("Running the model with ingredients:", ingredientList);
-
-      const response = await fetch('http://vellama.flycast:80/api/generate', {
+    try {``
+      //send a POST request to the our self-hosted Ollama instance with the model and prompt
+      const response = await fetch('http://localhost:8000/api/generate', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
@@ -27,26 +23,26 @@ const SaverAI: React.FC<{ ingredientList: string[] }> = ({ ingredientList }) => 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-
+      //parse the response as JSON
       const data = await response.json();
-      console.log(data);
+      //set the output to the response from the model
       let answer = data.response;
-      console.log(answer.length);
 
-      setOutput(answer); // Set the parsed JSON result as output
+      setOutput(answer);
     } catch (error) {
       console.error("Error running the model:", error);
       setOutput(`Error: ${error.message}`);
     }
   };
 
+  //return the component
   return (
-    <div className="">
+    <div>
       <div className="relative">
-        <h2 className="text-2xl text-honeydew">Recipe Generator</h2>
-        <button className="absolute top-0 right-0 m-1 bg-engviolet text-white px-4 py-2 rounded-md" onClick={runModel}>Get Suggestions</button>
+        <h2 className="text-3xl text-honeydew font-lobster">Recipe Generator</h2>
+        <button className="absolute top-0 right-0 m-1 bg-engviolet text-white text-lg px-4 py-2 rounded-md" onClick={runModel}>Get Suggestions</button>
       </div>
-      <div id="output-container" className="mt-7 mb-2 px-5 py-3 bg-white w-full min-h-24">
+      <div id="output-container" className="mt-7 mb-2 px-5 py-3 bg-white w-full min-h-60 rounded-sm">
         {output && (
           <div dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(output) }} />
       )}

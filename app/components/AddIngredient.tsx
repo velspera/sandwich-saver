@@ -1,15 +1,15 @@
 import { Form } from '@remix-run/react';
 
+// Form to add a new ingredient
 function NewIngredient() {
     return (
-        <div id="form-container" className="px-2">
+        <div id="form-container" className="px-2 mt-4">
             <Form method='post' id="ingredient-form">
-                <h2 className="mb-2 text-xl text-midgreen">Add New Ingredient</h2>
+                <h2 className="mb-2 text-xl text-midgreen font-lobster">Add Ingredient</h2>
                 <div>
-                    <label htmlFor='ingredient'>Ingredient</label>
-                    <input type='text' id='ingredient' name='ingredient' />
+                    <input type='text' id='ingredient' name='ingredient' className="border-4 border-double border-cinerous p-1" />
                 </div>
-                <input type='submit' value='Add Ingredient' />
+                <input type='submit' value='Add to List' className="mt-2 bg-eggplant text-white rounded-md px-3 py-2" />
             </Form>
         </div>
     );
