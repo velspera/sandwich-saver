@@ -1,6 +1,5 @@
 import { Form } from '@remix-run/react';
 
-// Form to add a new ingredient
 function NewIngredient() {
     return (
         <div id="form-container" className="px-2 mt-4">

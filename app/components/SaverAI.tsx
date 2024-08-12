@@ -2,12 +2,10 @@ import { useState} from 'react';
 import DOMPurify from 'dompurify';
 
 const SaverAI: React.FC<{ ingredientList: string[] }> = ({ ingredientList }) => {
-  const [output, setOutput] = useState<string | null>(null); //create the output variable and set it to null to start
+  const [output, setOutput] = useState<string | null>(null); 
 
-  //create a function to run the model
   const runModel = async () => {
     try {``
-      //send a POST request to the our self-hosted Ollama instance with the model and prompt
       const response = await fetch('http://localhost:8000/api/generate', {
         method: 'POST',
         headers: {
@@ -23,9 +21,7 @@ const SaverAI: React.FC<{ ingredientList: string[] }> = ({ ingredientList }) => 
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
-      //parse the response as JSON
       const data = await response.json();
-      //set the output to the response from the model
       let answer = data.response;
 
       setOutput(answer);
@@ -35,7 +31,6 @@ const SaverAI: React.FC<{ ingredientList: string[] }> = ({ ingredientList }) => 
     }
   };
 
-  //return the component
   return (
     <div>
       <div className="relative">

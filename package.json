@@ -24,6 +24,7 @@
     "replicate": "^0.31.1"
   },
   "devDependencies": {
+    "@flydotio/dockerfile": "^0.5.8",
     "@remix-run/dev": "^2.10.3",
     "@types/dompurify": "^3.0.5",
     "@types/react": "^18.2.20",
